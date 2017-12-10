@@ -25,6 +25,7 @@
     "password": "cad145c790528d4",
     "database": "heroku_630caa16134d790",
     "host": "us-cdbr-iron-east-05.cleardb.net",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "connectionLimit": 5
   }
 }
