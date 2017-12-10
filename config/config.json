@@ -21,9 +21,9 @@
     "dialect": "mysql"
   },
   "cleardb": {
-    "username": "b4beff7f3b59c3",
-    "password": "cad145c790528d4",
-    "database": "heroku_630caa16134d790",
+    "username": "bf05d551a9c243",
+    "password": "6256daf3",
+    "database": "heroku_54b11461a6f4658",
     "host": "us-cdbr-iron-east-05.cleardb.net",
     "dialect": "mysql",
     "connectionLimit": 5
