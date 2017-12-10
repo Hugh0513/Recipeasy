@@ -1,0 +1,30 @@
+{
+  "development": {
+    "username": "root",
+    "password": "localhost",
+    "database": "blogger",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "cleardb": {
+    "username": "b4beff7f3b59c3",
+    "password": "cad145c790528d4",
+    "database": "heroku_630caa16134d790",
+    "host": "us-cdbr-iron-east-05.cleardb.net",
+    "dialect": "mysql"
+  }
+}
