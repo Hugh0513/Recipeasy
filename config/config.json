@@ -21,7 +21,7 @@
     "dialect": "mysql"
   },
   "cleardb": {
-    "use_env_variable": "mysql://bf05d551a9c243:6256daf3@us-cdbr-iron-east-05.cleardb.net/heroku_54b11461a6f4658?reconnect=true",
+    "use_env_variable": "CLEARDB_DATABASE_URL",
     "username": "bf05d551a9c243",
     "password": "6256daf3",
     "database": "heroku_54b11461a6f4658",
