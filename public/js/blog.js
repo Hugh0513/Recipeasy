@@ -73,6 +73,16 @@ $(document).ready(function() {
       "margin-top":
       "-15px"
     });
+
+    var newPostAuthor = $("<h5>");
+    newPostAuthor.text("Written by: " + post.Author.name);
+    newPostAuthor.css({
+      float: "right",
+      color: "blue",
+      "margin-top":
+      "-10px"
+    });
+
     var newPostPanelBody = $("<div>");
     newPostPanelBody.addClass("panel-body");
     var newPostBody = $("<p>");
@@ -86,6 +96,7 @@ $(document).ready(function() {
     newPostPanelHeading.append(editBtn);
     newPostPanelHeading.append(newPostTitle);
     newPostPanelHeading.append(newPostCategory);
+    //newPostPanelHeading.append(newPostAuthor); // Written by xxx
     newPostPanelBody.append(newPostBody);
     newPostPanel.append(newPostPanelHeading);
     newPostPanel.append(newPostPanelBody);
@@ -114,7 +125,13 @@ $(document).ready(function() {
   }
 
   // This function displays a messgae when there are no posts
-  function displayEmpty() {
+  //function displayEmpty() {
+  function displayEmpty(id) {
+    var query = window.location.search;
+    var partial = "";
+    if (id) {
+      partial = " for Author #" + id;
+    }    
     blogContainer.empty();
     var messageh2 = $("<h2>");
     messageh2.css({ "text-align": "center", "margin-top": "50px" });
@@ -127,5 +144,51 @@ $(document).ready(function() {
     var newPostCategory = $(this).val();
     getPosts(newPostCategory);
   }
+
+  // 
+
+
+  // This function handles reloading new posts when the category changes
+  function handleAuthorChange() {
+    var newPostAuthor = $(this).val();
+    getPosts($("#category").val(), newPostAuthor);
+  }
+
+
+  // 
+
+  // Getting the authors, and their posts
+  var authorSelect = $("#author");
+  getAuthors();
+
+  // A function to get Authors and then render our list of Authors
+  function getAuthors() {
+    $.get("/api/authors", renderAuthorList);
+  }
+  // Function to either render a list of authors, or if there are none, direct the user to the page
+  // to create an author first
+  function renderAuthorList(data) {
+    if (!data.length) {
+      //window.location.href = "/authors";
+    }
+    $(".hidden").removeClass("hidden");
+    var rowsToAdd = [];
+    for (var i = 0; i < data.length; i++) {
+      rowsToAdd.push(createAuthorRow(data[i]));
+    }
+    authorSelect.empty();
+    console.log(rowsToAdd);
+    console.log(authorSelect);
+    authorSelect.append(rowsToAdd);
+  }
+
+  // Creates the author options in the dropdown
+  function createAuthorRow(author) {
+    var listOption = $("<option>");
+    listOption.attr("value", author.id);
+    listOption.text(author.name);
+    return listOption;
+  }
+
 
 });

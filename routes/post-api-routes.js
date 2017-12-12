@@ -13,12 +13,29 @@ var db = require("../models");
 module.exports = function(app) {
 
   // GET route for getting all of the posts
+  app.get("/api/posts", function(req, res) {
+    var query = {};
+    if (req.query.author_id) {
+      query.AuthorId = req.query.author_id;
+    }
+    // 1. Add a join here to include all of the Authors to these posts
+    db.Post.findAll({
+      where: query,
+      include: [db.Author]
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
+
+  /*
+  // GET route for getting all of the posts
   app.get("/api/posts/", function(req, res) {
     db.Post.findAll({})
     .then(function(dbPost) {
       res.json(dbPost);
     });
   });
+  */
 
   // Get route for returning posts of a specific category
   app.get("/api/posts/category/:category", function(req, res) {
@@ -47,11 +64,14 @@ module.exports = function(app) {
   // POST route for saving a new post
   app.post("/api/posts", function(req, res) {
     console.log(req.body);
-    db.Post.create({
-      title: req.body.title,
-      body: req.body.body,
-      category: req.body.category
-    })
+    db.Post.create(
+      req.body
+    //{
+      //title: req.body.title,
+      //body: req.body.body,
+      //category: req.body.category
+    //}
+    )
     .then(function(dbPost) {
       res.json(dbPost);
     });
