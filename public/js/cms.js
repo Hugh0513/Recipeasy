@@ -1,7 +1,13 @@
 $(document).ready(function() {
   // Getting jQuery references to the post body, title, form, and author select
-  var bodyInput = $("#body");
+  //var bodyInput = $("#body");
   var titleInput = $("#title");
+  var discriptionInput = $("#discription");
+  var photoInput = $("#photo");
+  var cookTimeInput = $("#cookTime");
+  var servingsInput = $("#servings");
+  var ingredientsInput = $("#ingredients");
+  var directionsInput = $("#directions");
   var cmsForm = $("#cms");
   var postCategorySelect = $("#category");
   var authorSelect = $("#author");
@@ -38,7 +44,12 @@ $(document).ready(function() {
     // Constructing a newPost object to hand to the database
     var newPost = {
       title: titleInput.val().trim(),
-      body: bodyInput.val().trim(),
+      discription: discriptionInput.val().trim(),
+      photo: photoInput.val().trim(),
+      cookTime: cookTimeInput.val().trim(),
+      servings: servingsInput.val().trim(),
+      ingredients: ingredientsInput.val().trim(),
+      directions: directionsInput.val().trim(),
       category: postCategorySelect.val(),
       AuthorId: authorSelect.val()
     };
@@ -131,4 +142,21 @@ $(document).ready(function() {
       window.location.href = "/blog";
     });
   }
+
+  $("#addIng").on("click", addIngRow);
+  var counter = 0;
+  function addIngRow(){
+    counter++;
+    console.log("clicked");
+
+  }
+
+  $("#addMethod").on("click", addMethodRow);
+  var counter = 0;
+  function addMethodRow(){
+    counter++;
+    console.log("clicked");
+
+  }
+
 });

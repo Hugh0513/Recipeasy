@@ -74,7 +74,7 @@ $(document).ready(function() {
       "-15px"
     });
 
-    var newPostAuthor = $("<h5>");
+    var newPostAuthor = $("<h5>"); // Written by xxx
     newPostAuthor.text("Written by: " + post.Author.name);
     newPostAuthor.css({
       float: "right",

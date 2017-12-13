@@ -7,8 +7,33 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    body: {
+    discription: {
       type: DataTypes.TEXT,
+      allowNull: false,
+      len: [1]
+    },
+    cookTime: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      len: [1]
+    },
+    servings: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      len: [1]
+    },
+    ingredients: {
+      type: DataTypes.text,
+      allowNull: false,
+      len: [1]
+    },
+    directions: {
+      type: DataTypes.text,
+      allowNull: false,
+      len: [1]
+    },
+    thumbsUp: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       len: [1]
     },
@@ -26,6 +51,11 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
+
+    Post.hasMany(models.Ingredient, {
+      onDelete: "cascade"
+    });
+
   };
 
   return Post;
