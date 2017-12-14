@@ -9,36 +9,37 @@ module.exports = function(sequelize, DataTypes) {
     },
     discription: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
       len: [1]
     },
     cookTime: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       len: [1]
     },
     servings: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       len: [1]
     },
     ingredients: {
-      type: DataTypes.text,
+      type: DataTypes.TEXT,
       allowNull: false,
       len: [1]
     },
     directions: {
-      type: DataTypes.text,
+      type: DataTypes.TEXT,
       allowNull: false,
       len: [1]
     },
     thumbsUp: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       len: [1]
     },
     category: {
       type: DataTypes.STRING,
+      allowNull: false,
       defaultValue: "Personal"
     }
   });
@@ -50,10 +51,6 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: {
         allowNull: false
       }
-    });
-
-    Post.hasMany(models.Ingredient, {
-      onDelete: "cascade"
     });
 
   };

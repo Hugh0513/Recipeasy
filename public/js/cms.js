@@ -36,11 +36,13 @@ $(document).ready(function() {
 
 
   function handleFormSubmit(event) {
+    console.log("clicked");
     event.preventDefault();
     // Wont submit the post if we are missing a body or a title
-    if (!titleInput.val().trim() || !bodyInput.val().trim() || !authorSelect.val()) {
+    if (!titleInput.val().trim() || !ingredientsInput.val().trim() || !directionsInput.val().trim() || !authorSelect.val()) {
       return;
     }
+    console.log("ok");
     // Constructing a newPost object to hand to the database
     var newPost = {
       title: titleInput.val().trim(),
@@ -63,12 +65,14 @@ $(document).ready(function() {
       updatePost(newPost);
     }
     else {
+      console.log("newPost");
       submitPost(newPost);
     }
   }
 
   // Submits a new post and brings user to blog page upon completion
   function submitPost(Post) {
+      console.log("post");
     $.post("/api/posts/", Post, function() {
       window.location.href = "/blog";
     });
@@ -92,8 +96,17 @@ $(document).ready(function() {
         console.log(data.AuthorId || data.id)
         // If this post exists, prefill our cms forms with its data
         titleInput.val(data.title);
-        bodyInput.val(data.body);
+        //bodyInput.val(data.body);
         authorId = data.AuthorId || data.id;
+
+        discriptionInput.val(data.discription);
+        photoInput.val(data.photo);
+        cookTimeInput.val(data.cookTime);
+        servingsInput.val(data.servings);
+        ingredientsInput.val(data.ingredients);
+        directionsInput.val(data.directions);
+        postCategorySelect.val(data.category);
+
         // If we have a post with this id, set a flag for us to know to update the post
         // when we hit submit
         updating = true;
