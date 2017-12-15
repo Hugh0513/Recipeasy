@@ -1,0 +1,141 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: url('../images/food.png');
+	background-color: #F0E68C;
+	/*background-color: lightgrey;*/
+	font-family: cursive, sans-serif;
+}
+
+nav {
+	text-align: center;
+}
+
+nav h1 {
+	background-color: red;
+	color: white;
+	padding: 5px 0 5px 0;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	font-size: 33px;
+}
+
+nav a {
+	text-decoration: none;
+}
+
+nav h4 {
+	margin: 0px;
+	border-bottom: 2px solid black;
+	box-shadow: 0 2px 5px black;
+	background-color: red;
+	color: white;
+	padding-bottom: 5px;
+}
+nav h4 ~ a {
+	display: inline-block;
+	padding: 10px 15px;
+	background-color: lightgreen;
+	border: 2px solid black;
+	margin: 15px 0;
+	box-shadow: 2px 2px 5px black;
+	color: black;
+}
+nav h4 ~ a:hover {
+	box-shadow: 0 0 2px black;
+	transform: translate(2px,2px);
+}
+
+
+main {
+	text-align: center;
+	min-height: 54vh;
+	/*max-height: 54vh;*/
+}
+
+#search form {
+	/*margin-top: 25px;*/
+	margin-bottom: 20px;
+
+}
+
+footer {
+	text-align: center;
+	background-color: saddlebrown;
+	color: white;
+	/*padding: 2px 0;*/
+	margin-top: 50px;
+	box-shadow: 0 -2px 5px black;
+	border-top: 2px solid black;
+}
+
+footer a img {
+	border-radius: 4px;
+	width: 25px;
+	height: 25px;
+	margin-top: -4px;
+}
+
+footer a:hover img { 
+	transform: scale(1.2); 
+}
+#home main img{
+	animation: fadein 0.5s forwards;
+	opacity: 0;
+	width:750px;
+	height: 350px;
+}
+
+#search main img{
+	animation: fadein 0.5s forwards;
+	opacity: 0;
+	width:750px;
+	height: 350px;
+}
+@keyframes fadein {
+	to {opacity:1;}
+}
+#add form {
+	text-align: right;
+	display: table;
+	margin: 20px auto;
+	border: 1px solid black;
+	padding: 15px;
+}
+#add form label {
+	display: block;
+	margin-top: 10px;
+	vertical-align: top;
+}
+#add form input, #add form textarea {
+	width: 300px;
+	margin-left: 10px;
+	vertical-align: top;
+	padding: 8px;
+}
+#add form textarea {
+	height: 200px;
+}
+
+#add form input[type="submit"] {
+	display: block;
+	padding: 10px 15px;
+	background-color: lightgreen;
+	border: 2px solid black;
+	margin: 15px auto;
+	box-shadow: 2px 2px 5px black;
+	color: black;
+}
+
+#add form input[type="submit"]:hover {
+	box-shadow: 0 0 2px black;
+	transform: translate(2px,2px);
+}
+
+body h2 {
+	text-align: center;
+}
+
