@@ -24,32 +24,32 @@ module.exports = function(app) {
 
   // Get route for returning posts of a specific category
   app.get("/api/recipes/category/:category", function(req, res) {
-    db.Post.findAll({
+    db.Recipe.findAll({
       where: {
         category: req.params.category
       }
     })
-    .then(function(dbPost) {
-      res.json(dbPost);
+    .then(function(dbRecipe) {
+      res.json(dbRecipe);
     });
   });
 
   // Get rotue for retrieving a single post
   app.get("/api/recipes/:id", function(req, res) {
-    db.Post.findOne({
+    db.Recipe.findOne({
       where: {
         id: req.params.id
       }
     })
-    .then(function(dbPost) {
-      res.json(dbPost);
+    .then(function(dbRecipe) {
+      res.json(dbRecipe);
     });
   });
 
   // POST route for saving a new post
   app.post("/api/recipes", function(req, res) {
     console.log(req.body);
-    db.Post.create(
+    db.Recipe.create(
       req.body
     //{
       //title: req.body.title,
@@ -57,33 +57,33 @@ module.exports = function(app) {
       //category: req.body.category
     //}
     )
-    .then(function(dbPost) {
-      res.json(dbPost);
+    .then(function(dbRecipe) {
+      res.redirect("/");
     });
   });
 
   // DELETE route for deleting posts
   app.delete("/api/recipes/:id", function(req, res) {
-    db.Post.destroy({
+    db.Recipe.destroy({
       where: {
         id: req.params.id
       }
     })
-    .then(function(dbPost) {
-      res.json(dbPost);
+    .then(function(dbRecipe) {
+      res.json(dbRecipe);
     });
   });
 
   // PUT route for updating posts
   app.put("/api/recipes", function(req, res) {
-    db.Post.update(req.body,
+    db.Recipe.update(req.body,
       {
         where: {
           id: req.body.id
         }
       })
-    .then(function(dbPost) {
-      res.json(dbPost);
+    .then(function(dbRecipe) {
+      res.json(dbRecipe);
     });
   });
 };
