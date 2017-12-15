@@ -139,3 +139,13 @@ body h2 {
 	text-align: center;
 }
 
+#well-section {
+	background-color: #fff;
+	padding:20px;
+	max-width:710px;
+	width:90%;
+	margin:20px 0;
+	margin: 0 auto;
+	text-align:left;
+
+}
