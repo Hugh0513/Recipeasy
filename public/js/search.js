@@ -3,7 +3,7 @@
 // URL parameter. Our server then performs the search to grab that recipe from the Database.
 // when user hits the search-btn
 $("#search-btn").on("click", function() {
-  // save the recipe they typed into the character-search input
+  // save the recipe they typed into the recipe-search input
   var searchedRecipe = $("#recipe-search").val().trim();
   // replace any spaces between that recipe with no space
   // (effectively deleting the spaces). Make the string lowercase
