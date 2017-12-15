@@ -2,6 +2,22 @@
 // In this case, the user submits a recipe name... we then pass that recipe name as a
 // URL parameter. Our server then performs the search to grab that recipe from the Database.
 // when user hits the search-btn
+$.get('/api/recipes', function(data) {
+
+}).done(function(data) {
+  console.log(data[0].title);
+  for (i = 0; i < 4; i++ ){
+  var well = $('#well-section');
+  well.append(data[i].title + "<br>");
+  well.append(data[i].cook_time + "<br>");
+  well.append(data[i].servings + "<br>");
+  well.append(data[i].ingredients + "<br>");
+  well.append(data[i].thumbs_up + "<br>");
+  well.append(data[i].author + "<br>");
+  well.append(data[i].directions + "<br><hr>");
+  };
+});
+
 $("#search-btn").on("click", function() {
   // save the recipe they typed into the recipe-search input
   var searchedRecipe = $("#recipe-search").val().trim();
