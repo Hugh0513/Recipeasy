@@ -8,13 +8,17 @@ $.get('/api/recipes', function(data) {
   console.log(data[0].title);
   for (i = 0; i < 4; i++ ){
   var well = $('#well-section');
+  well.append("<img scr='"+data[i].img+"'>");
   well.append(data[i].title + "<br>");
   well.append(data[i].cook_time + "<br>");
   well.append(data[i].servings + "<br>");
   well.append(data[i].ingredients + "<br>");
   well.append(data[i].thumbs_up + "<br>");
   well.append(data[i].author + "<br>");
-  well.append(data[i].directions + "<br><hr>");
+  well.append(data[i].directions + "<br>");
+  // well.append("<button class='thumbsUp' data-id='"+data[i].id+"'>&#128077;</button><button class= 'thumbsDown' data-id='"+data[i].id+"'>&#128078;</button>");
+  // well.append("<button class='share' data-id='"+data[i].id+"'><img src='images/' width=25 height=25 alt='share'></button>");
+  well.append("<hr>");
   };
 });
 
@@ -53,4 +57,10 @@ $("#search-btn").on("click", function() {
       $("#well-section").append("<h3>Directions: " + data.directions+ "</h3>");
     }
   });
+});
+
+$("#recipe-search").on("keyup", function(e){
+  if(e.keyCode===13){
+    $("#search-btn").click();
+  }
 });

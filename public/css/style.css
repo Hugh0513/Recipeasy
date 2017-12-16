@@ -59,6 +59,7 @@ main {
 #search form {
 	/*margin-top: 25px;*/
 	margin-bottom: 20px;
+	display: block;
 
 }
 
@@ -92,7 +93,7 @@ footer a:hover img {
 #search main img{
 	animation: fadein 0.5s forwards;
 	opacity: 0;
-	width:750px;
+	width:660px;
 	height: 350px;
 }
 @keyframes fadein {
@@ -144,8 +145,14 @@ body h2 {
 	padding:20px;
 	max-width:710px;
 	width:90%;
-	margin:20px 0;
-	margin: 0 auto;
+	margin: 40px auto;
 	text-align:left;
+	box-sizing: border-box;
+	display: block;
+}
 
+#fb-root {
+	width: 35px;
+	height: 25px;
+	color: red;
 }
