@@ -6,7 +6,7 @@ $.get('/api/recipes', function(data) {
 
 }).done(function(data) {
   console.log(data[0].title);
-  for (i = 0; i < 4; i++ ){
+  for (i = 0; i < data.length && i < 4 ; i++ ){
   var well = $('#well-section');
   well.append("<img scr='"+data[i].img+"'>");
   well.append(data[i].title + "<br>");
