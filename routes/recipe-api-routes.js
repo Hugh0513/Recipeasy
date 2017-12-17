@@ -34,6 +34,24 @@ module.exports = function(app) {
     });
   });
 
+
+  // Get route for returning posts of a specific category
+  var Sequelize = require('sequelize');
+  const Op = Sequelize.Op;
+  app.get("/api/recipes/:recipe", function(req, res) {
+    var searchStr = "%" + req.params.recipe + "%"
+    db.Recipe.findAll({
+      where: {
+        title: {
+          [Op.like]: searchStr
+        }
+      }
+    })
+    .then(function(dbRecipe) {
+      res.json(dbRecipe);
+    });
+  });
+
   // Get rotue for retrieving a single post
   app.get("/api/recipes/:id", function(req, res) {
     db.Recipe.findOne({

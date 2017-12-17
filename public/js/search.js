@@ -30,17 +30,18 @@ $("#search-btn").on("click", function() {
   searchedRecipe = searchedRecipe.replace(/\s+/g, "").toLowerCase();
   // run an AJAX GET-request for our servers api,
   // including the user's recipe in the url
-   $.get("/api/" + searchedRecipe, function(data) {
+   $.get("/api/recipes/" + searchedRecipe, function(data) {
     // log the data to our console
     console.log(data);
     //empty to well-section before adding new content
     $("#well-section").empty();
     // if the data is not there, then return an error message
-    if (!data) {
+    if (!data.length === 0) {
       $("#well-section").append("<h2> Sorry! Your recipe was not found. </h2>");
     }
     // otherwise
     else {
+      /*
       // append the recipe title
       $("#well-section").append("<h2>" + data.title + "</h2>");
       // cook time
@@ -55,6 +56,21 @@ $("#search-btn").on("click", function() {
       $("#well-section").append("<h3>Author: " + data.author+ "</h3>");
       // directions
       $("#well-section").append("<h3>Directions: " + data.directions+ "</h3>");
+      */
+      for (i = 0; i < data.length && i < 4 ; i++ ){
+        var well = $('#well-section');
+        well.append("<img scr='"+data[i].img+"'>");
+        well.append(data[i].title + "<br>");
+        well.append(data[i].cook_time + "<br>");
+        well.append(data[i].servings + "<br>");
+        well.append(data[i].ingredients + "<br>");
+        well.append(data[i].thumbs_up + "<br>");
+        well.append(data[i].author + "<br>");
+        well.append(data[i].directions + "<br>");
+        // well.append("<button class='thumbsUp' data-id='"+data[i].id+"'>&#128077;</button><button class= 'thumbsDown' data-id='"+data[i].id+"'>&#128078;</button>");
+        // well.append("<button class='share' data-id='"+data[i].id+"'><img src='images/' width=25 height=25 alt='share'></button>");
+        well.append("<hr>");
+      };
     }
   });
 });
