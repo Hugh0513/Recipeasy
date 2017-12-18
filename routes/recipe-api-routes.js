@@ -38,7 +38,7 @@ module.exports = function(app) {
   // Get route for returning posts of a specific category
   var Sequelize = require('sequelize');
   const Op = Sequelize.Op;
-  app.get("/api/recipes/:recipe", function(req, res) {
+  app.get("/api/recipes/title/:recipe", function(req, res) {
     var searchStr = "%" + req.params.recipe + "%"
     db.Recipe.findAll({
       where: {
@@ -89,6 +89,7 @@ module.exports = function(app) {
     })
     .then(function(dbRecipe) {
       res.json(dbRecipe);
+      res.redirect("/manage"); // go back to manage.html
     });
   });
 

@@ -9,9 +9,8 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     cook_time: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true,
-      defaultValue: "Personal",
       validate: {
         len: [1]
       }

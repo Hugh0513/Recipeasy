@@ -31,4 +31,14 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/add.html"));
   });
 
+  // authors route loads manage.html
+  app.get("/manage", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/manage.html"));
+  });
+
+  // authors route loads edit.html
+  app.get("/edit", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/edit.html"));
+  });
+
 };

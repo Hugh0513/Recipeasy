@@ -28,9 +28,13 @@ $("#search-btn").on("click", function() {
   // replace any spaces between that recipe with no space
   // (effectively deleting the spaces). Make the string lowercase
   searchedRecipe = searchedRecipe.replace(/\s+/g, "").toLowerCase();
+  if(!searchedRecipe){
+    return;
+  }
+
   // run an AJAX GET-request for our servers api,
   // including the user's recipe in the url
-   $.get("/api/recipes/" + searchedRecipe, function(data) {
+   $.get("/api/recipes/title/" + searchedRecipe, function(data) {
     // log the data to our console
     console.log(data);
     //empty to well-section before adding new content
