@@ -10,7 +10,7 @@ $(document).ready(function() {
   var directionsInput = $("#directions");
   
   // UPDATA butten clicked
-  $("#update-btn").on("submit", handleFormSubmit);
+  $("#update-btn").on("click", handleFormSubmit);
 
   // Gets the part of the url that comes after the "?" (which we have if we're updating a post)
   var url = window.location.search;
@@ -18,6 +18,7 @@ $(document).ready(function() {
   var authorId;
   // Sets a flag for whether or not we're updating a post to be false initially
   var updating = false;
+  //var updating = true;
 
   // If we have this section in our url, we pull out the post id from the url
   // In '?recipe_id=1', recipeId is 1
@@ -48,8 +49,7 @@ $(document).ready(function() {
       servings: servingsInput.val().trim(),
       ingredients: ingredientsInput.val().trim(),
       directions: directionsInput.val().trim(),
-      category: postCategorySelect.val(),
-      AuthorId: authorSelect.val()
+      AuthorId: authorInput.val()
     };
 
     console.log(newPost);
@@ -57,7 +57,7 @@ $(document).ready(function() {
     // If we're updating a post run updatePost to update a post
     // Otherwise run submitPost to create a whole new post
     if (updating) {
-      newPost.id = postId;
+      newPost.id = recipeId;
       updateRecipe(newPost);
     }
     else {
@@ -67,12 +67,14 @@ $(document).ready(function() {
   }
 
   // Submits a new post and brings user to blog page upon completion
+  /*
   function submitRecipe(Post) {
       console.log("post");
     $.post("/api/recipes/", Post, function() {
       window.location.href = "/manage";
     });
   }
+  */
 
   // Gets recipe data for a recipe if we're editing
   function getRecipeData(id, type) {
