@@ -9,13 +9,13 @@ $(document).ready(function() {
       well.append("<hr>");
       for (i = 0; i < data.length; i++ ){
       //well.append("<img scr='"+data[i].img+"'>");
-      well.append(data[i].title + "<br>");
-      well.append(data[i].cook_time + "<br>");
-      well.append(data[i].servings + "<br>");
-      well.append(data[i].ingredients + "<br>");
-      well.append(data[i].thumbs_up + "<br>");
-      well.append(data[i].author + "<br>");
-      well.append(data[i].directions + "<br>");
+      well.append("Title: <font size='5'>" + data[i].title + "</font>      ");
+      //well.append(data[i].cook_time + "<br>");
+      //well.append(data[i].servings + "<br>");
+      //well.append(data[i].ingredients + "<br>");
+      //well.append(data[i].thumbs_up + "<br>");
+      well.append("posted by " + data[i].author + "<br>");
+      //well.append(data[i].directions + "<br>");
 
       var deleteBtn = $("<button>");
       deleteBtn.text("DELETE");
