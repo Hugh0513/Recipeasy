@@ -45,11 +45,11 @@ $(document).ready(function() {
     // Constructing a newPost object to hand to the database
     var newPost = {
       title: titleInput.val().trim(),
-      cookTime: cookTimeInput.val().trim(),
+      cook_time: cookTimeInput.val().trim(),
       servings: servingsInput.val().trim(),
       ingredients: ingredientsInput.val().trim(),
-      directions: directionsInput.val().trim(),
-      AuthorId: authorInput.val()
+      author: authorInput.val(),
+      directions: directionsInput.val().trim()
     };
 
     console.log(newPost);
