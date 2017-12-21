@@ -9,9 +9,9 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     cook_time: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      defaultValue: "Personal",
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
       validate: {
         len: [1]
       }
@@ -19,12 +19,13 @@ module.exports = function(sequelize, DataTypes) {
     servings: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue: 0,
       validate: {
         len: [1]
       }
     },
     ingredients: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
       validate: {
         len: [1]

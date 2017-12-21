@@ -11,9 +11,11 @@ var db        = {};
 if (config.use_env_variable) {
   console.log("connecting to heroku cleardb.....");
   console.log(config.use_env_variable);
+  console.log(config.CLEARDB_DATABASE_URL);
   console.log(process.env[config.use_env_variable]); // undefined
+  console.log(process.env["CLEARDB_DATABASE_URL"]); // undefined
   //var sequelize = new Sequelize(process.env[config.use_env_variable]);
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+  var sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL);
 } else {
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }

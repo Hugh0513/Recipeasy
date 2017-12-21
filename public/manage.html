@@ -2,11 +2,12 @@
 <html lang="en-us">
 <head>
 	<meta charset="UTF-8">
-	<title>RecipEasy</title>
+	<title>RecipEasy(Management view)</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="js/script.js"></script>
-	</head>
+</head>
+
 <body id="search">
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -15,32 +16,27 @@
   js = d.createElement(s); js.id = id;
   js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11';
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
+</script>
 <nav>
-	<a href="home.html"><h1>RecipEasy</h1></a>
+	<a href="home.html"><h1>RecipEasy(Management view)</h1></a>
 	<h4>Find or Create your favorite recipes</h4>
 	<a href="add.html"><strong>Add A Recipe</strong></a>
 	<a href="search.html"><strong>Search Recipes</strong></a>
 </nav>
+
+
 <main>
 	<!--<form method="post" action="/search">-->
 	<input type="text" name="searchStr" id="recipe-search">
 	<input type="submit" value="Search" id="search-btn">	
 
-<output id="well-section">search results</output>
+	<output id="well-section"><!--search results--></output>
 
 		<!-- Content will go in here  -->
-<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
-<<<<<<< HEAD
 
-<!-- Your embedded comments code -->
-<!-- <div class="fb-comment-embed"
-   data-href="https://www.facebook.com/zuck/posts/10102735452532991?comment_id=1070233703036185"
-   data-width="500"></div>
- -->
-=======
+	<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
 <!--</form>-->
->>>>>>> 5cb8812e2cfc43e7282011e87a574f7b460547fd
 </main>
 
 <footer>
@@ -50,6 +46,6 @@
 	<a href="http://linkedin.com" target="_blank"><img src="images/linkedin.png" width=25 height=25></a>
 	<a href="https://github.com/Hugh0513/Recipeasy" target="_blank"><img src="images/github.png" width=25 height=25></a>
 </footer>
-<script src="js/search.js" type="text/javascript"></script>
+<script src="js/manage.js" type="text/javascript"></script>
 </body>
 </html>
