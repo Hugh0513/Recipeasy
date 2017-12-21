@@ -49,11 +49,32 @@ nav h4 ~ a:hover {
 	transform: translate(2px,2px);
 }
 
+aside {
+	display: inline-block;
+	width: 25%;
+	vertical-align: top;
+	padding: 10px 15px;
+	box-sizing: border-box;
+	background-color: white;
+	border: 2px solid black;
+	margin-left: -40px;
+	/*height: 350px;*/
+
+}
+aside a {
+	display: block;
+}
 
 main {
 	text-align: center;
 	min-height: 54vh;
+}
+
+#home main {	
 	/*max-height: 54vh;*/
+	width: 74%;
+	display: inline-block;
+	vertical-align: top;
 }
 
 #search form {
@@ -88,6 +109,8 @@ footer a:hover img {
 	opacity: 0;
 	width:750px;
 	height: 350px;
+	max-width: 100%;
+
 }
 
 #search main img{
@@ -151,8 +174,11 @@ body h2 {
 	display: block;
 }
 
-#fb-root {
-	width: 35px;
-	height: 25px;
-	color: red;
+@media only screen and (max-width: 650px){
+	#home aside, #home main {
+		width: auto;
+		display: block;
+	}
 }
+
+

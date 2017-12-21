@@ -7,7 +7,7 @@
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="js/script.js"></script>
 </head>
-<body id="home">
+<body id="{{data.id}}">
 <nav>
 	<a href="home.html"><h1>RecipEasy</h1></a>
 	<h4>Find or Create your favorite recipes</h4>
@@ -16,17 +16,16 @@
 </nav>
 
 <main>
-	<img src="images/hero0.jpg">
-</main>
-<aside>
-	<h3>Top 5 Favorite Recipes</h3>
-	<a href="">#1 Recipe Title</a>
-	<a href="">#2 Recipe Title</a>
-	<a href="">#3 Recipe Title</a>
-	<a href="">#4 Recipe Title</a>
-	<a href="">#5 Recipe Title</a>
+	<img src="{{data.img}}">
+	<h1>{{data.title}}</h1>
+	<h3>{{data.cookTime}}</h3>
+	<h3>{{data.servings}}</h3>
+	<h3>{{data.ingredients}}</h3>
+	<h3>{{data.thumbsUp}}</h3>
+	<h3>{{data.author}}</h3>
+	<h3>{{data.directions}}</h3>
+	</main>
 
-</aside>
 <footer>
 	<h3>Follow Us On</h3>
 	<a href="http://facebook.com" target="_blank"><img src="images/facebook.png"></a>
