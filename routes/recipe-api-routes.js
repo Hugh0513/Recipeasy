@@ -105,4 +105,56 @@ module.exports = function(app) {
       res.json(dbRecipe);
     });
   });
+
+  // update LIKE
+  app.put("/api/recipes/like/:id", function(req, res) {
+    db.Recipe.increment("thumbs_up",
+      {
+        where: {
+          id: req.params.id
+        }
+      })
+    .then(function(dbRecipe) {
+      res.json(dbRecipe);
+    });
+  });
+
+  // update LIKE(cancel)
+  app.put("/api/recipes/cancelLike/:id", function(req, res) {
+    db.Recipe.increment({"thumbs_up": -1 }, //decrement doesn't work
+      {
+        where: {
+          id: req.params.id
+        }
+      })
+    .then(function(dbRecipe) {
+      res.json(dbRecipe);
+    });
+  });
+
+  // update DISLIKE
+  app.put("/api/recipes/dislike/:id", function(req, res) {
+    db.Recipe.increment("thumbs_down",
+      {
+        where: {
+          id: req.params.id
+        }
+      })
+    .then(function(dbRecipe) {
+      res.json(dbRecipe);
+    });
+  });
+
+  // update DISLIKE(cancel)
+  app.put("/api/recipes/cancelDislike/:id", function(req, res) {
+    db.Recipe.increment({"thumbs_down": -1 }, //decrement doesn't work
+      {
+        where: {
+          id: req.params.id
+        }
+      })
+    .then(function(dbRecipe) {
+      res.json(dbRecipe);
+    });
+  });
 };

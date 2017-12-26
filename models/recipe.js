@@ -32,9 +32,18 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     thumbs_up: {
-      type: DataTypes.BOOLEAN,
-      allowNull: true,
-      defaultValue: true,
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+      validate: 
+      {
+        len: [1]
+      }
+    },
+    thumbs_down: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
       validate: 
       {
         len: [1]
