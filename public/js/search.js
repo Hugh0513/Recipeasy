@@ -29,8 +29,11 @@ function getRecipes(){
       var likeLabel = $("<label>");
       likeLabel.text(" " + data[i].thumbs_up + " ");
       likeLabel.attr("id", "up_" + data[i].id);
-      likeBtn.append(likeLabel);
       well.append(likeBtn);
+      well.append("&nbsp;");
+      well.append(likeLabel);
+
+      well.append("&nbsp;&nbsp;&nbsp;");
 
       var dislikeBtn = $("<span>");
       //dislikeBtn.text(data[i].thumbs_down);
@@ -41,8 +44,9 @@ function getRecipes(){
       var dislikeLabel = $("<label>");
       dislikeLabel.text(" " + data[i].thumbs_down + " ");
       dislikeLabel.attr("id", "down_" + data[i].id);
-      dislikeBtn.append(dislikeLabel);
       well.append(dislikeBtn);
+      well.append("&nbsp;");
+      well.append(dislikeLabel);
 
       //this doesn't work 
       //well.append('<a class="like" id="up_' + data[i].id + '"><span class="glyphicon glyphicon-thumbs-up">' + data[i].thumbs_up + '</span></a>')
