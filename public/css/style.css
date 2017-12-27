@@ -68,6 +68,19 @@ aside a {
 main {
 	text-align: center;
 	min-height: 54vh;
+	font-family: sans-serif;
+}
+
+.title {
+	text-align: left;
+	font-family: sans-serif;
+	font-size: 20px;
+	color: blue;	
+}
+
+.item {
+	text-align: left;
+	font-family: sans-serif;
 }
 
 #home main {	

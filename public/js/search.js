@@ -8,17 +8,35 @@ function getRecipes(){
 
   }).done(function(data) {
     console.log(data[0].title);
+    console.log(data[4].image);
     for (i = 0; i < data.length && i < 4 ; i++ ){
       var well = $('#well-section');
-      well.append("<img scr='"+data[i].img+"'>");
-      well.append(data[i].title + "<br>");
-      well.append(data[i].cook_time + "<br>");
-      well.append(data[i].servings + "<br>");
-      well.append(data[i].ingredients + "<br>");
-      well.append(data[i].author + "<br>");
-      well.append(data[i].directions + "<br>");
-      // well.append("<button class='thumbsUp' data-id='"+data[i].id+"'>&#128077;</button><button class= 'thumbsDown' data-id='"+data[i].id+"'>&#128078;</button>");
-      // well.append("<button class='share' data-id='"+data[i].id+"'><img src='images/' width=25 height=25 alt='share'></button>");
+      well.append("<img src='" + data[i].image + "'>");
+
+      //var url = window.URL || window.webkitURL;
+      //well.append("<img src='" + url.createObjectURL(data[i].image) + "'>");
+      well.append("<label class='title'>" + data[i].title + "</label>&nbsp;&nbsp;");
+      well.append("Posted by</label>&nbsp;&nbsp;" + data[i].author + "<br>");
+      well.append("&nbsp;&nbsp;<label class='item'>Cook Time</label>&nbsp;&nbsp;" + data[i].cook_time + "min<br>");
+      well.append("&nbsp;&nbsp;<label class='item'>Servings</label>&nbsp;&nbsp;" + data[i].servings + "<br>");
+      well.append("&nbsp;&nbsp;<label class='item'>Ingredients</label><br>");
+      var ingArr = data[i].ingredients.split(/\n/g);
+      console.log(ingArr);
+      for (j = 0; j < ingArr.length; j++ ){
+        well.append("&nbsp;&nbsp;&nbsp;<input type='checkbox'>&nbsp;" + ingArr[j] + "<br>");
+      }
+      //well.append("<input type='checkbox'>&nbsp;" + data[i].ingredients.replace(/\n/g,'<br>') + "<br>");
+      //well.append(data[i].author + "<br>");
+
+      //well.append(data[i].directions.replace(/\n/g,'<br>') + "<br>");
+      well.append("&nbsp;&nbsp;<label class='item'>Directions</label><br>");
+      var dirArr = data[i].directions.split(/\n/g);
+      console.log(dirArr);
+      for (j = 0; j < dirArr.length; j++ ){
+        well.append("&nbsp;&nbsp;&nbsp;<input type='checkbox'>&nbsp;" + dirArr[j] + "<br>");
+      }
+
+      //well.append("<br>");
 
       var likeBtn = $("<span>");
       //likeBtn.text(data[i].thumbs_up);

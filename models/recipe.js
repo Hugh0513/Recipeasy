@@ -63,6 +63,13 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
+    image: {
+      type: DataTypes.BLOB,
+      allowNull: true,
+      validate: {
+        len: [1]
+      }
+    }
     
     // category: {
     //   type: DataTypes.STRING,
