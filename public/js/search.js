@@ -9,75 +9,88 @@ function getRecipes(){
   }).done(function(data) {
     console.log(data[0].title);
     console.log(data[4].image);
-    for (i = 0; i < data.length && i < 4 ; i++ ){
-      var well = $('#well-section');
-      well.append("<img src='" + data[i].image + "'>");
 
-      //var url = window.URL || window.webkitURL;
-      //well.append("<img src='" + url.createObjectURL(data[i].image) + "'>");
-      well.append("<label class='title'>" + data[i].title + "</label>&nbsp;&nbsp;");
-      well.append("Posted by</label>&nbsp;&nbsp;" + data[i].author + "<br>");
-      well.append("&nbsp;&nbsp;<label class='item'>Cook Time</label>&nbsp;&nbsp;" + data[i].cook_time + "min<br>");
-      well.append("&nbsp;&nbsp;<label class='item'>Servings</label>&nbsp;&nbsp;" + data[i].servings + "<br>");
-      well.append("&nbsp;&nbsp;<label class='item'>Ingredients</label><br>");
-      var ingArr = data[i].ingredients.split(/\n/g);
-      console.log(ingArr);
-      for (j = 0; j < ingArr.length; j++ ){
-        well.append("&nbsp;&nbsp;&nbsp;<input type='checkbox'>&nbsp;" + ingArr[j] + "<br>");
-      }
-      //well.append("<input type='checkbox'>&nbsp;" + data[i].ingredients.replace(/\n/g,'<br>') + "<br>");
-      //well.append(data[i].author + "<br>");
+    displayRecipes(data);
 
-      //well.append(data[i].directions.replace(/\n/g,'<br>') + "<br>");
-      well.append("&nbsp;&nbsp;<label class='item'>Directions</label><br>");
-      var dirArr = data[i].directions.split(/\n/g);
-      console.log(dirArr);
-      for (j = 0; j < dirArr.length; j++ ){
-        well.append("&nbsp;&nbsp;&nbsp;<input type='checkbox'>&nbsp;" + dirArr[j] + "<br>");
-      }
-
-      //well.append("<br>");
-
-      var likeBtn = $("<span>");
-      //likeBtn.text(data[i].thumbs_up);
-      likeBtn.attr("data-id", data[i].id);
-      likeBtn.attr("id", "like_" + data[i].id);
-      likeBtn.attr("clicked", "false");
-      likeBtn.addClass("glyphicon glyphicon-thumbs-up like unclicked");
-      var likeLabel = $("<label>");
-      likeLabel.text(" " + data[i].thumbs_up + " ");
-      likeLabel.attr("id", "up_" + data[i].id);
-      well.append(likeBtn);
-      well.append("&nbsp;");
-      well.append(likeLabel);
-
-      well.append("&nbsp;&nbsp;&nbsp;");
-
-      var dislikeBtn = $("<span>");
-      //dislikeBtn.text(data[i].thumbs_down);
-      dislikeBtn.attr("data-id", data[i].id);
-      dislikeBtn.attr("id", "dislike_" + data[i].id);
-      dislikeBtn.attr("clicked", "false");
-      dislikeBtn.addClass("glyphicon glyphicon-thumbs-down dislike unclicked");
-      var dislikeLabel = $("<label>");
-      dislikeLabel.text(" " + data[i].thumbs_down + " ");
-      dislikeLabel.attr("id", "down_" + data[i].id);
-      well.append(dislikeBtn);
-      well.append("&nbsp;");
-      well.append(dislikeLabel);
-
-      //this doesn't work 
-      //well.append('<a class="like" id="up_' + data[i].id + '"><span class="glyphicon glyphicon-thumbs-up">' + data[i].thumbs_up + '</span></a>')
-
-      well.append("<hr>");
-    };
   });
 }
 
+function displayRecipes(data) {
+
+  for (i = 0; i < data.length && i < 4 ; i++ ){
+    var well = $('#well-section');
+    //well.append("<img class='img' id='" + data[i].id + "' src='" + data[i].image + "'>"); //error
+    var recipeImg = $("<img>");
+    recipeImg.addClass("img");
+    recipeImg.attr("id", data[i].id);
+    //recipeImg.attr("src", "http://images2.fanpop.com/image/photos/13700000/Darth-Vader-Wallpaper-darth-vader-13703254-1024-768.jpg");
+    // recipeImg.attr("src", data[i].image);
+    well.append(recipeImg);
+
+    //var url = window.URL || window.webkitURL;
+    //well.append("<img src='" + url.createObjectURL(data[i].image) + "'>");
+    well.append("<label class='title'>" + data[i].title + "</label>&nbsp;&nbsp;");
+    well.append("Posted by</label>&nbsp;&nbsp;" + data[i].author + "<br>");
+
+    /*
+    well.append("&nbsp;&nbsp;<label class='item'>Cook Time</label>&nbsp;&nbsp;" + data[i].cook_time + "min<br>");
+    well.append("&nbsp;&nbsp;<label class='item'>Servings</label>&nbsp;&nbsp;" + data[i].servings + "<br>");
+    well.append("&nbsp;&nbsp;<label class='item'>Ingredients</label><br>");
+    var ingArr = data[i].ingredients.split(/\n/g);
+    console.log(ingArr);
+    for (j = 0; j < ingArr.length; j++ ){
+      well.append("&nbsp;&nbsp;&nbsp;<input type='checkbox'>&nbsp;" + ingArr[j] + "<br>");
+    }
+    //well.append("<input type='checkbox'>&nbsp;" + data[i].ingredients.replace(/\n/g,'<br>') + "<br>");
+    //well.append(data[i].author + "<br>");
+
+    //well.append(data[i].directions.replace(/\n/g,'<br>') + "<br>");
+    well.append("&nbsp;&nbsp;<label class='item'>Directions</label><br>");
+    var dirArr = data[i].directions.split(/\n/g);
+    console.log(dirArr);
+    for (j = 0; j < dirArr.length; j++ ){
+      well.append("&nbsp;&nbsp;&nbsp;<input type='checkbox'>&nbsp;" + dirArr[j] + "<br>");
+    }
+
+    var likeBtn = $("<span>");
+    //likeBtn.text(data[i].thumbs_up);
+    likeBtn.attr("data-id", data[i].id);
+    likeBtn.attr("id", "like_" + data[i].id);
+    likeBtn.attr("clicked", "false");
+    likeBtn.addClass("glyphicon glyphicon-thumbs-up like unclicked");
+    var likeLabel = $("<label>");
+    likeLabel.text(" " + data[i].thumbs_up + " ");
+    likeLabel.attr("id", "up_" + data[i].id);
+    well.append(likeBtn);
+    well.append("&nbsp;");
+    well.append(likeLabel);
+
+    well.append("&nbsp;&nbsp;&nbsp;");
+
+    var dislikeBtn = $("<span>");
+    //dislikeBtn.text(data[i].thumbs_down);
+    dislikeBtn.attr("data-id", data[i].id);
+    dislikeBtn.attr("id", "dislike_" + data[i].id);
+    dislikeBtn.attr("clicked", "false");
+    dislikeBtn.addClass("glyphicon glyphicon-thumbs-down dislike unclicked");
+    var dislikeLabel = $("<label>");
+    dislikeLabel.text(" " + data[i].thumbs_down + " ");
+    dislikeLabel.attr("id", "down_" + data[i].id);
+    well.append(dislikeBtn);
+    well.append("&nbsp;");
+    well.append(dislikeLabel);
+    */
+
+    well.append("<hr>");
+  };
+}
+
+
 getRecipes();
 
+$("#search-btn").on("click", handleSearch);
 
-$("#search-btn").on("click", function() {
+function handleSearch(){
   // save the recipe they typed into the recipe-search input
   var searchedRecipe = $("#recipe-search").val().trim();
   // replace any spaces between that recipe with no space
@@ -95,44 +108,16 @@ $("#search-btn").on("click", function() {
     //empty to well-section before adding new content
     $("#well-section").empty();
     // if the data is not there, then return an error message
-    if (!data.length === 0) {
+    if (data.length === 0) {
       $("#well-section").append("<h2> Sorry! Your recipe was not found. </h2>");
     }
     // otherwise
     else {
-      /*
-      // append the recipe title
-      $("#well-section").append("<h2>" + data.title + "</h2>");
-      // cook time
-      $("#well-section").append("<h3>Cook Time: " + data.cookTime + "</h3>");
-      // servings
-      $("#well-section").append("<h3>Servings: " + data.servings + "</h3>");
-      // ingredients
-      $("#well-section").append("<h3>Ingredients: " + data.ingredients+ "</h3>");
-      // thumbs up
-      $("#well-section").append("<h3>Thumbs Up: " + data.thumbsUp+ "</h3>");
-      // author
-      $("#well-section").append("<h3>Author: " + data.author+ "</h3>");
-      // directions
-      $("#well-section").append("<h3>Directions: " + data.directions+ "</h3>");
-      */
-      for (i = 0; i < data.length && i < 4 ; i++ ){
-        var well = $('#well-section');
-        well.append("<img scr='"+data[i].img+"'>");
-        well.append(data[i].title + "<br>");
-        well.append(data[i].cook_time + "<br>");
-        well.append(data[i].servings + "<br>");
-        well.append(data[i].ingredients + "<br>");
-        well.append(data[i].author + "<br>");
-        well.append(data[i].directions + "<br>")
-        well.append(data[i].thumbs_up + "<br>");;
-        // well.append("<button class='thumbsUp' data-id='"+data[i].id+"'>&#128077;</button><button class= 'thumbsDown' data-id='"+data[i].id+"'>&#128078;</button>");
-        // well.append("<button class='share' data-id='"+data[i].id+"'><img src='images/' width=25 height=25 alt='share'></button>");
-        well.append("<hr>");
-      };
+      $("#well-section").append("search results");
+      displayRecipes(data);
     }
   });
-});
+}
 
 $("#recipe-search").on("keyup", function(e){
   if(e.keyCode===13){
@@ -241,3 +226,82 @@ function getCounter(id) {
     }
   });
 }
+
+$("#well-section").on("click", ".img",function() {
+  console.log($(this).attr("id"));
+
+  // Grab the URL of the website
+  var currentURL = window.location.origin;
+  
+  // AJAX post the data to the friends API. 
+  $.get(currentURL + "/api/recipes/" + $(this).attr("id"), function(data){
+
+    // Initialize
+    $('#recipeTitle').empty();
+    $('#recipeImg').empty();
+    $('#recipeContent').empty();
+    $('#likeArea').empty();
+
+    // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+    $("#recipeTitle").text(data.title);
+    //console.log(data.photo);
+    $('#recipeImg').attr("src", data.image);
+    $('#recipeCountent').text(data.ingredients);
+
+    var well = $('#recipeContent');
+
+    well.append("&nbsp;&nbsp;<label class='item'>Cook Time</label>&nbsp;&nbsp;" + data.cook_time + "min<br>");
+    well.append("&nbsp;&nbsp;<label class='item'>Servings</label>&nbsp;&nbsp;" + data.servings + "<br>");
+    well.append("&nbsp;&nbsp;<label class='item'>Ingredients</label><br>");
+    var ingArr = data.ingredients.split(/\n/g);
+    console.log(ingArr);
+    for (j = 0; j < ingArr.length; j++ ){
+      well.append("&nbsp;&nbsp;&nbsp;<input type='checkbox'>&nbsp;" + ingArr[j] + "<br>");
+    }
+    //well.append("<input type='checkbox'>&nbsp;" + data[i].ingredients.replace(/\n/g,'<br>') + "<br>");
+    //well.append(data[i].author + "<br>");
+
+    //well.append(data[i].directions.replace(/\n/g,'<br>') + "<br>");
+    well.append("&nbsp;&nbsp;<label class='item'>Directions</label><br>");
+    var dirArr = data.directions.split(/\n/g);
+    console.log(dirArr);
+    for (j = 0; j < dirArr.length; j++ ){
+      well.append("&nbsp;&nbsp;&nbsp;<input type='checkbox'>&nbsp;" + dirArr[j] + "<br>");
+    }
+
+    var likeArea = $("#likeArea");
+
+    var likeBtn = $("<span>");
+    //likeBtn.text(data[i].thumbs_up);
+    likeBtn.attr("data-id", data.id);
+    likeBtn.attr("id", "like_" + data.id);
+    likeBtn.attr("clicked", "false");
+    likeBtn.addClass("glyphicon glyphicon-thumbs-up like unclicked");
+    var likeLabel = $("<label>");
+    likeLabel.text(" " + data.thumbs_up + " ");
+    likeLabel.attr("id", "up_" + data.id);
+    likeArea.append(likeBtn);
+    likeArea.append("&nbsp;");
+    likeArea.append(likeLabel);
+
+    likeArea.append("&nbsp;&nbsp;&nbsp;");
+
+    var dislikeBtn = $("<span>");
+    //dislikeBtn.text(data[i].thumbs_down);
+    dislikeBtn.attr("data-id", data.id);
+    dislikeBtn.attr("id", "dislike_" + data.id);
+    dislikeBtn.attr("clicked", "false");
+    dislikeBtn.addClass("glyphicon glyphicon-thumbs-down dislike unclicked");
+    var dislikeLabel = $("<label>");
+    dislikeLabel.text(" " + data.thumbs_down + " ");
+    dislikeLabel.attr("id", "down_" + data.id);
+    likeArea.append(dislikeBtn);
+    likeArea.append("&nbsp;");
+    likeArea.append(dislikeLabel);
+
+    // Show the modal with the best match 
+    $("#resultsModal").modal('toggle');
+
+  });
+
+});

@@ -83,6 +83,14 @@ main {
 	font-family: sans-serif;
 }
 
+.modal-content {
+	font-family: sans-serif;
+}
+
+#likeArea {
+	float: left;
+}
+
 #home main {	
 	/*max-height: 54vh;*/
 	width: 74%;
