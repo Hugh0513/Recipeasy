@@ -3,10 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<title>RecipEasy</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="js/script.js"></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script><!--This is needed for modal-->
+
 </head>
+
 <body id="home">
 <nav>
 	<a href="home.html"><h1>RecipEasy</h1></a>
@@ -20,12 +25,15 @@
 </main>
 <aside>
 	<h3>Top 5 Favorite Recipes</h3>
+	<div id="best5">
+	<!--
 	<a href="">#1 Recipe Title</a>
 	<a href="">#2 Recipe Title</a>
 	<a href="">#3 Recipe Title</a>
 	<a href="">#4 Recipe Title</a>
 	<a href="">#5 Recipe Title</a>
-
+	-->
+	</div>
 </aside>
 <footer>
 	<h3>Follow Us On</h3>
@@ -34,5 +42,31 @@
 	<a href="http://linkedin.com" target="_blank"><img src="images/linkedin.png"></a>
 	<a href="https://github.com/Hugh0513/Recipeasy" target="_blank"><img src="images/github.png"></a>
 </footer>
+
+<!-- Modal -->
+<div id="resultsModal" class="modal fade" role="dialog" style="display: none;">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h2 class="modal-title"><strong id="recipeTitle">Recipe</strong></h2>
+      </div>
+      <div class="modal-body">
+        <!--<h2 id="recipeTitle">AA</h2>-->
+        <img id="recipeImage" src="" alt="">
+        <label id="recipeContent"></label>
+      </div>
+      <div class="modal-footer">
+        <label id="likeArea"></label>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 </body>
 </html>

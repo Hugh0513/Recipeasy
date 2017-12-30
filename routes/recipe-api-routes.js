@@ -20,6 +20,16 @@ module.exports = function(app) {
     });
   });
  
+  // GET route for getting all of the posts order by thumbs_up
+  app.get("/api/recipes/order", function(req, res) {
+    db.Recipe.findAll({
+      order:[['thumbs_up', 'DESC']],
+      limit: 5
+    })
+    .then(function(dbRecipe) {
+      res.json(dbRecipe);
+    });
+  });
 
   // Get route for returning posts of a specific category
   app.get("/api/recipes/category/:category", function(req, res) {

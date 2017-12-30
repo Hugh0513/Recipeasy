@@ -227,13 +227,13 @@ function getCounter(id) {
   });
 }
 
+// Display detail on Modal
 $("#well-section").on("click", ".img",function() {
   console.log($(this).attr("id"));
 
   // Grab the URL of the website
   var currentURL = window.location.origin;
   
-  // AJAX post the data to the friends API. 
   $.get(currentURL + "/api/recipes/" + $(this).attr("id"), function(data){
 
     // Initialize
@@ -242,7 +242,6 @@ $("#well-section").on("click", ".img",function() {
     $('#recipeContent').empty();
     $('#likeArea').empty();
 
-    // Grab the result from the AJAX post so that the best match's name and photo are displayed.
     $("#recipeTitle").text(data.title);
     //console.log(data.photo);
     $('#recipeImg').attr("src", data.image);
@@ -266,7 +265,8 @@ $("#well-section").on("click", ".img",function() {
     var dirArr = data.directions.split(/\n/g);
     console.log(dirArr);
     for (j = 0; j < dirArr.length; j++ ){
-      well.append("&nbsp;&nbsp;&nbsp;<input type='checkbox'>&nbsp;" + dirArr[j] + "<br>");
+      var num = j + 1;
+      well.append("&nbsp;&nbsp;&nbsp;<input type='checkbox'>&nbsp;" + num.toString() + ".&nbsp;" + dirArr[j] + "<br>");
     }
 
     var likeArea = $("#likeArea");
@@ -299,7 +299,6 @@ $("#well-section").on("click", ".img",function() {
     likeArea.append("&nbsp;");
     likeArea.append(dislikeLabel);
 
-    // Show the modal with the best match 
     $("#resultsModal").modal('toggle');
 
   });

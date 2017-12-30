@@ -73,7 +73,7 @@ main {
 
 .title {
 	text-align: left;
-	font-family: sans-serif;
+	font-family: cursive, sans-serif;
 	font-size: 20px;
 	color: blue;	
 }
@@ -103,6 +103,19 @@ main {
 	margin-bottom: 20px;
 	display: block;
 
+}
+
+#best5 a {
+	width: 80%; 
+	background-color:#B2DBBF;
+	border:2px solid #00171F;
+	padding:10px; 
+	margin: 10px;
+}
+
+#best5 a:hover { 
+	background-color: #247BA0;
+	color:#222222; 
 }
 
 footer {
