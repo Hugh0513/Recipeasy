@@ -150,4 +150,106 @@ $(document).ready(function() { // Without this, on"click" doesn't work.
 
 	});
 
+	
+	// Listen to LIKE and DISLIKE button clicked
+	$(document).on("click", "span.like", handleRecipeLike);
+	$(document).on("click", "span.dislike", handleRecipeDislike);
+
+	// LIKE button
+	function handleRecipeLike() {
+	  var currentRecipe = $(this);
+	  console.log(currentRecipe);
+	  console.log($(this).attr("data-id"));
+	  if ($(this).attr("clicked") === "false"){
+	    likeRecipe(currentRecipe.attr("data-id"));
+	    $(this).attr("clicked","true");
+	    $(this).removeClass("unclicked");
+	    $(this).addClass("clicked");
+	  }
+	  else {
+	    cancelLike($(this).attr("data-id"));
+	    $(this).attr("clicked","false");
+	    $(this).removeClass("clicked");
+	    $(this).addClass("unclicked");
+	  }
+	}
+
+	// Like button clicked first
+	function likeRecipe(id) {
+	  $.ajax({
+	    method: "PUT",
+	    url: "/api/recipes/like/" + id
+	  })
+	  .then(function(data){
+	    //$('#well-section').empty();
+	    getCounter(id);
+	    //console.log(data[0].id);//undefined
+	    //$("#up_" + data[0].id).text(data[0].thumbs_up);
+	  });
+	}
+
+	// Like button clicked twice
+	function cancelLike(id) {
+	  $.ajax({
+	    method: "PUT",
+	    url: "/api/recipes/cancelLike/" + id
+	  })
+	  .then(function(data){
+	    //$('#well-section').empty();
+	    getCounter(id);
+	    //console.log(data[0].id);//undefined
+	    //$("#up_" + data[0].id).text(data[0].thumbs_up);
+	  });
+	}
+
+	// DISLIKE button
+	function handleRecipeDislike() {
+	  var currentRecipe = $(this);
+	  console.log(currentRecipe);
+	  if ($(this).attr("clicked") === "false"){
+	    dislikeRecipe(currentRecipe.attr("data-id"));
+	    $(this).attr("clicked","true");
+	    $(this).removeClass("unclicked");
+	    $(this).addClass("clicked");
+	  }
+	  else {
+	    cancelDislike($(this).attr("data-id"));
+	    $(this).attr("clicked","false");
+	    $(this).removeClass("clicked");
+	    $(this).addClass("unclicked");
+	  }
+	}
+
+	function dislikeRecipe(id) {
+	  $.ajax({
+	    method: "PUT",
+	    url: "/api/recipes/dislike/" + id
+	  })
+	  .then(function(){
+	    //$('#well-section').empty();
+	    getCounter(id);
+	  });
+	}
+
+	function cancelDislike(id) {
+	  $.ajax({
+	    method: "PUT",
+	    url: "/api/recipes/cancelDislike/" + id
+	  })
+	  .then(function(){
+	    //$('#well-section').empty();
+	    getCounter(id);
+	  });
+	}
+
+	// Update Like and Dislike counters
+	function getCounter(id) {
+	  $.get('/api/recipes/' + id, function(data) {
+	    if(data){
+	      $("#up_" + id).text(data.thumbs_up);
+	      $("#down_" + id).text(data.thumbs_down);
+	    }
+	  });
+	}
+
 });
