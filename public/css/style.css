@@ -89,6 +89,7 @@ main {
 
 #likeArea {
 	float: left;
+  	cursor : pointer;
 }
 
 #home main {	
