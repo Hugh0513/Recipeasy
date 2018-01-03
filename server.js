@@ -24,13 +24,22 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // Static directory
 app.use(express.static("public"));
 
-// Routes
-// =============================================================
+// // Routes
+// // =============================================================
 require("./routes/html-routes.js")(app);
 require("./routes/recipe-api-routes.js")(app);
-require("./routes/author-api-routes.js")(app);
+// require("./routes/author-api-routes.js")(app);
 //require("./routes/recipe-api-routes.js")(app);
 
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+// Import routes and give the server access to them.
+var routes = require("./controllers/recipeController.js");
+
+app.use("/", routes);
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync({ force: false }).then(function() {

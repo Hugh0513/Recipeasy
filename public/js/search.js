@@ -7,9 +7,6 @@ function getRecipes(){
   $.get('/api/recipes', function(data) {
 
   }).done(function(data) {
-    console.log(data[0].title);
-    console.log(data[4].image);
-
     displayRecipes(data);
 
   });
@@ -245,7 +242,7 @@ $("#well-section").on("click", ".img",function() {
     $("#recipeTitle").text(data.title);
     //console.log(data.photo);
     $('#recipeImg').attr("src", data.image);
-    $('#recipeCountent').text(data.ingredients);
+    $('#recipeContent').text(data.ingredients);
 
     var well = $('#recipeContent');
 

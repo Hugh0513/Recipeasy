@@ -144,14 +144,17 @@ footer a:hover img {
 	width:750px;
 	height: 350px;
 	max-width: 100%;
-
+	cursor: pointer;
 }
 
 #search main img{
 	animation: fadein 0.5s forwards;
 	opacity: 0;
-	width:660px;
-	height: 350px;
+	width: 200px;
+	height: 150px;
+	cursor: pointer;
+	clear: left;
+	margin: 10px;
 }
 @keyframes fadein {
 	to {opacity:1;}

@@ -1,0 +1,55 @@
+<body id="home">
+<nav>
+	<a href="/"><h1>RecipEasy</h1></a>
+	<h4>Find or Create your favorite recipes</h4>
+	<a href="add">Add A Recipe</a>
+	<a href="search">Search Recipes</a>
+</nav>
+
+<main>
+	<img src="images/hero0.jpg">
+</main>
+<aside>
+	<h3>Top 5 Favorite Recipes</h3>
+	<div id="best5">
+
+	</div>
+</aside>
+<footer>
+	<h3>Follow Us On</h3>
+	<a href="http://facebook.com" target="_blank"><img src="images/facebook.png"></a>
+	<a href="http://twitter.com" target="_blank"><img src="images/twitter.png"></a>
+	<a href="http://linkedin.com" target="_blank"><img src="images/linkedin.png"></a>
+	<a href="https://github.com/Hugh0513/Recipeasy" target="_blank"><img src="images/github.png"></a>
+</footer>
+
+<!-- Modal -->
+<div id="resultsModal" class="modal fade" role="dialog" style="display: none;">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h2 class="modal-title"><strong id="recipeTitle">Recipe</strong></h2>
+      </div>
+      <div class="modal-body">
+        <!--<h2 id="recipeTitle">AA</h2>-->
+        <img id="recipeImage" src="" alt="">
+        <label id="recipeContent"></label>
+      </div>
+      <div class="modal-footer">
+        <label id="likeArea"></label>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+</body>
+{{!-- <h1>HANDLEBARS TEST</h1>
+  {{#each recipes}}
+      {{> recipes/recipe-block}}
+  {{/each}} --}}
