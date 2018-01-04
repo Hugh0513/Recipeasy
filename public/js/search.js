@@ -14,6 +14,8 @@ function getRecipes(){
 
 function displayRecipes(data) {
 
+  $('#well-section').append('<br>');
+
   for (i = 0; i < data.length && i < 4 ; i++ ){
     var well = $('#well-section');
     //well.append("<img class='img' id='" + data[i].id + "' src='" + data[i].image + "'>"); //error
@@ -21,8 +23,7 @@ function displayRecipes(data) {
     recipeImg.addClass("img");
     recipeImg.attr("id", data[i].id);
     //recipeImg.attr("src", "http://images2.fanpop.com/image/photos/13700000/Darth-Vader-Wallpaper-darth-vader-13703254-1024-768.jpg");
-    recipeImg.attr("src", "C:\\fakepath\\curry.jpeg");
-    //recipeImg.attr("src", data[i].image);
+    recipeImg.attr("src", data[i].image);
     well.append(recipeImg);
 
     //var url = window.URL || window.webkitURL;
