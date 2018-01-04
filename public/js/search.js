@@ -21,7 +21,7 @@ function displayRecipes(data) {
     recipeImg.addClass("img");
     recipeImg.attr("id", data[i].id);
     //recipeImg.attr("src", "http://images2.fanpop.com/image/photos/13700000/Darth-Vader-Wallpaper-darth-vader-13703254-1024-768.jpg");
-    // recipeImg.attr("src", data[i].image);
+    recipeImg.attr("src", data[i].image);
     well.append(recipeImg);
 
     //var url = window.URL || window.webkitURL;
