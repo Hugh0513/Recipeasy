@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1]
+        len: [1,30]
       }
     },
     cook_time: {
@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: 0,
       validate: {
-        len: [1]
+        len: [1,5]
       }
     },
     servings: {
@@ -23,14 +23,14 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: 0,
       validate: {
-        len: [1]
+        len: [1,5]
       }
     },
     ingredients: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
-        len: [1]
+        len: [1,300]
       }
     },
     thumbs_up: {
@@ -55,21 +55,21 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1]
+        len: [1,20]
       }
     },
     directions: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
-        len: [1]
+        len: [1,300]
       }
     },
     image: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1]
+        len: [1,300]
       }
     }
     
@@ -78,11 +78,10 @@ module.exports = function(sequelize, DataTypes) {
     //   defaultValue: "Uncategorized"
     // }
 
-},
-    {
+  },
+  {
     timestamps: false
-    }
-  );
+  });
 
   // Recipe.associate = function(models) {
   //   // We're saying that a Recipe should belong to an Author

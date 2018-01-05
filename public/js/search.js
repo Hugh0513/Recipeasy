@@ -23,7 +23,11 @@ function displayRecipes(data) {
     recipeImg.addClass("img");
     recipeImg.attr("id", data[i].id);
     //recipeImg.attr("src", "http://images2.fanpop.com/image/photos/13700000/Darth-Vader-Wallpaper-darth-vader-13703254-1024-768.jpg");
-    recipeImg.attr("src", data[i].image);
+    
+    var imgUrl = data[i].image.split('\\');
+    console.log(imgUrl);
+    //recipeImg.attr("src", data[i].image);
+    recipeImg.attr("src", 'https://s3.amazonaws.com/recipeasy-app/' + imgUrl[2]);
     well.append(recipeImg);
 
     //var url = window.URL || window.webkitURL;
@@ -141,7 +145,9 @@ $("#well-section").on("click", ".img",function() {
 
     $("#recipeTitle").text(data.title);
     //console.log(data.photo);
-    $('#recipeImg').attr("src", data.image);
+    var imgUrl = data.image.split('\\');
+    console.log(imgUrl);
+    $('#recipeImg').attr("src", imgUrl[2]);
     $('#recipeContent').text(data.ingredients);
 
     var well = $('#recipeContent');

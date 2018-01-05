@@ -50,7 +50,7 @@ $(document).ready(function() { // Without this, on"click" doesn't work.
 	  $.get('/api/recipes/order', function(data) {
 
 	  }).done(function(data) {
-	    console.log(data[0].title);
+	    //console.log(data[0].title);
 
 	    displayRecipes(data);
 	  });
