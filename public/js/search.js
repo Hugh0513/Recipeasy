@@ -24,10 +24,11 @@ function displayRecipes(data) {
     recipeImg.attr("id", data[i].id);
     //recipeImg.attr("src", "http://images2.fanpop.com/image/photos/13700000/Darth-Vader-Wallpaper-darth-vader-13703254-1024-768.jpg");
     
-    var imgUrl = data[i].image.split('\\');
-    console.log(imgUrl);
+    //var imgUrl = data[i].image.split('\\');
+    //console.log(imgUrl);
     //recipeImg.attr("src", data[i].image);
-    recipeImg.attr("src", 'https://s3.amazonaws.com/recipeasy-app/' + imgUrl[2]);
+    //recipeImg.attr("src", 'https://s3.amazonaws.com/recipeasy-app/' + imgUrl[2]);
+    recipeImg.attr("src", 'https://s3.amazonaws.com/recipeasy-app/' + data[i].image);
     well.append(recipeImg);
 
     //var url = window.URL || window.webkitURL;
